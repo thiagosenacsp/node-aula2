@@ -37,4 +37,13 @@ app.post("/", (req, res) => {
   res.status(200).send(novoPet);
 });
 
+app.delete("/:nome", (req, res) => {
+  const nomeInformado = req.params.nome.toLowerCase();
+  const indicePetSelecionado = pets.findIndex(
+    (pet) => pet.nome === nomeInformado,
+  );
+  const petRemovido = pets.splice(indicePetSelecionado, 1);
+  res.status(200).send(petRemovido);
+});
+
 app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
