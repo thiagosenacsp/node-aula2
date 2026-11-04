@@ -31,4 +31,10 @@ app.put("/:nome", (req, res) => {
   res.status(200).send(nomeSelecionado);
 });
 
+app.post("/", (req, res) => {
+  const novoPet = req.body;
+  pets.push(novoPet);
+  res.status(200).send(novoPet);
+});
+
 app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));

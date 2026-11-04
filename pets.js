@@ -11,14 +11,14 @@ const pets = [
     nome: "belinha",
     tutor: "Ana Maria",
     idade: 8,
-    vacinada: false,
+    vacinado: false,
   },
   {
     id: 3,
     nome: "rex",
     tutor: "Joana Queiroz",
     idade: 2,
-    vacinada: true,
+    vacinado: true,
   },
 ];
 
