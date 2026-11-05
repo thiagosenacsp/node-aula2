@@ -23,6 +23,12 @@ app.get("/:nome", (requisicao, resposta) => {
 app.put("/:nome", (req, res) => {
   const nomeInformado = req.params.nome.toLowerCase();
   const nomeSelecionado = pets.find((pet) => pet.nome === nomeInformado);
+
+  if (!nomeSelecionado) {
+    res.status(404).send("Não existe o Pet informado.");
+    return;
+  }
+
   const campos = Object.keys(req.body);
 
   for (let campo of campos) {
