@@ -40,7 +40,7 @@ app.put("/:nome", (req, res) => {
 app.post("/", (req, res) => {
   const novoPet = req.body;
   pets.push(novoPet);
-  res.status(200).send(novoPet);
+  res.status(201).send(novoPet);
 });
 
 app.delete("/:nome", (req, res) => {
@@ -48,6 +48,12 @@ app.delete("/:nome", (req, res) => {
   const indicePetSelecionado = pets.findIndex(
     (pet) => pet.nome === nomeInformado,
   );
+
+  if (indicePetSelecionado === -1) {
+    res.status(404).send("Não existe o Pet informado");
+    return;
+  }
+
   const petRemovido = pets.splice(indicePetSelecionado, 1);
   res.status(200).send(petRemovido);
 });
